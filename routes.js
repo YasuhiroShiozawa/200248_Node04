@@ -5,7 +5,9 @@ const default_username = process.env.LOGIN_NAME
 const default_password = process.env.PASSWORD
 
 router.get('/', (req, res) => {
-    res.render('index.ejs');
+    let data = {}
+    data.title = '何か-NANIKA-'
+    res.render('index.ejs',data);
 })
 
 router.get('/login', (req, res) => {
@@ -14,6 +16,12 @@ router.get('/login', (req, res) => {
 
 router.get('/profile', (req, res) => {
     res.render('profile.ejs');
+})
+
+router.get('/item/:id', (req, res) => {
+    const id = req.params.id
+    res.render('item/show.ejs');
+    console.log(id)
 })
 
 router.post('/auth', (req, res) => {
