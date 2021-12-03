@@ -1,4 +1,5 @@
 const express = require('express')
+const item = require('./models/item')
 const router = express.Router()
 
 const default_username = process.env.LOGIN_NAME
@@ -15,13 +16,22 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/profile', (req, res) => {
-    res.render('profile.ejs');
+    let user={
+        name:'塩澤泰寛',birthplace:'横浜のどこか',hobby:['アニメ','鉄道','楽器']
+    }
+    let data = {}
+    data.title = 'プロフィール'
+    data.user = user
+
+    res.render('profile.ejs',data);
 })
 
 router.get('/item/:id', (req, res) => {
     const id = req.params.id
-    res.render('item/show.ejs');
     console.log(id)
+    console.log(item)
+    res.render('item/show.ejs');
+
 })
 
 router.post('/auth', (req, res) => {
