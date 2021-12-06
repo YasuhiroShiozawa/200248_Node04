@@ -29,8 +29,9 @@ router.get('/profile', (req, res) => {
 router.get('/item/:id', (req, res) => {
     const id = req.params.id
     console.log(id)
-    console.log(item)
-    res.render('item/show.ejs');
+    let data = {}
+    data.item = item.find(id)
+    res.render('item/show.ejs',data);
 
 })
 

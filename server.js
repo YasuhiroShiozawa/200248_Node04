@@ -11,9 +11,12 @@ const app = express()
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({ extended: true}))
 
-app.use(routes)
+const layouts = require('express-ejs-layouts')
+app.set('layout', 'layouts/default');
+app.set('view engine', 'ejs')
+app.use(layouts) ;
 
-app.set('view engine','ejs')
+app.use(routes)
 
 app.listen(port, host, () => {
     console.log('http://' + host + ':' + port)
