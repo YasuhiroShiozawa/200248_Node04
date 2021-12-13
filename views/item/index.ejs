@@ -1,0 +1,7 @@
+<h1>商品リスト</h1>
+<ul>
+<% items.forEach((item) => { %>
+<dt><a href="/item/<%= item.id %>"><%= item.name %></a></dt>
+<dd><%= item.price %>円</dd>
+<% })%>   
+</ul>
